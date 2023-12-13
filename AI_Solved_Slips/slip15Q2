@@ -1,0 +1,25 @@
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F', 'G'],
+    'D': ['H', 'I'],
+    'E': [],
+    'F': ['K'],
+    'G': [],
+    'H': [],
+    'I': [],
+    'J': [],
+    'K': []
+}
+def dfs(start,goal,visited=None):
+    visited=visited or set()
+    visited.add(start)
+    print(start,end='')
+    
+    return start==goal or any(neigh not in visited and dfs(neigh,goal,visited) for neigh in graph.get(start,[]))
+
+initial_node ='A'
+goal_node ='H'
+result=dfs(initial_node,goal_node)
+if result:
+    print(f"\nresut path:", result)
