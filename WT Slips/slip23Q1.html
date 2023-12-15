@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        #image-container {
+            display: grid;
+        }
+        #image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img src="img1.jpg" alt="Your Image">
+    </div>
+        <button onclick="rotateImage('clockwise')">Rotate Clockwise</button>
+        <button onclick="rotateImage('anticlockwise')">Rotate Anticlockwise</button>
+    <script>
+        let currentRotation = 0;
+        function rotateImage(direction) {
+            const imageElements = document.querySelectorAll('#image-container img');
+
+            if (direction === 'clockwise') {
+                currentRotation += 90;
+            } else if (direction === 'anticlockwise') {
+                currentRotation -= 90;
+            }
+
+            imageElements.forEach(img => {
+                img.style.transform = `rotate(${currentRotation}deg)`;
+            });
+        }
+    </script>
+</body>
+</html>

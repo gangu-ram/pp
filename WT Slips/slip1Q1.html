@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Form</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+<style>
+label{
+    width:100px;
+    padding:2px;
+    display:inline-block;
+}
+body{ 
+    background-color:yellow;
+    margin: 0;
+    padding: 0;
+}
+h1{
+   color:red;
+   text-align:center;
+}
+#submit{
+  background-color:green;
+}
+#clear{
+  background-color:blue;
+}
+</style>
+</head>
+<body>
+<div id="form">
+<h1>Project Management</h1>
+<label>Project Name</label>
+<input type="text"name="pname"placeholder="project name"><br><br>
+<label>Assigned To</label>
+<select>
+<option>Er Merry Petision</option>
+<option>Er Sanika</option>
+<option>Sakshi</option>
+</select>
+<br><br>
+<label>Start Date</label>
+<input type="date"name="sdate"><br><br>
+<label>End Date</label>
+<input type="date"name="edate"><br><br>
+<label>Priority</label>
+<input type="radio"name="pri"value="High">High
+<input type="radio"name="pri"value="Average">Average
+<input type="radio"name="pri"value="Low">Low
+<br><br>
+<label>Description</label>
+<textarea name="des"></textarea><br><br>
+<button id="submit">Submit</button>
+<button id="clear">Clear</button>
+</div>
+</form>
+</body>
+</html>

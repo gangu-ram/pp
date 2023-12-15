@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration Form</title>
+    <style>
+        body {
+            font-family: 'Arial';
+            background-color:pink;
+            margin: 0;
+            padding:0;
+            font-size:20px;
+        }
+        label {
+            width:300px;
+            display:inline-block;
+        }   
+    </style>
+</head>
+<body>
+
+    <form action="#" method="post" id="registration-form">
+        <h1>Customer Registration Form</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        <input type="radio" name="gender" value="other"> Other<br><br>
+
+        <label for="preferred-days">Preferred Days of Purchasing:</label>
+        <input type="text" id="preferred-days" name="preferred-days"><br><br>
+
+        <label for="favorite-item">Favorite Item:</label>
+        <select id="favorite-item" name="favorite-item">
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="groceries">Groceries</option>
+        </select><br><br>
+        <label for="suggestions">Suggestions:</label>
+        <textarea id="suggestions" name="suggestions" rows="4"></textarea><br><br>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+</html>

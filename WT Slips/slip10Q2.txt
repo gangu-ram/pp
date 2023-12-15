@@ -1,0 +1,57 @@
+SLIP 10
+Q2]1. Model the following Online shopping information as a document database. 
+Consider online shopping where the customer can get different products
+from different brands. Customers can rate the brands and products
+2. Assume appropriate attributes and collections as per the query
+requirements [3]
+3. Insert at least 5 documents in each collection. [3]
+4. Answer the following Queries.
+a. List the names of product whose warranty period is one year [3 ]
+b. List the customers has done purchase on “15/08/2023”. [3 ]
+c. Display the names of products with brand which have highest rating.
+[4]
+d. Display customers who stay in …… city and billamt >50000 .[4]
+=
+(1)Creating:-
+use shopping
+db.createCollection("product")
+db.product.insertOne({"id":1,"name":"Laptop","brand": "HP","warranty_period": 1,
+"rating": 6,"customer":{"id":1,"name":"John Doe","city":"Pune",
+"purchase_date":15/08/2023,"bill_amount": 60000}})
+
+(2)Insert at least 5 documents:-
+db.product.insertOne({"id":2,"name":"Laptop","brand": "HP","warranty_period": 1,
+"rating": 4,"customer":{"id":2,"name":"Sakshi","city":"Pune",
+"purchase_date":15/08/2023,"bill_amount": 90000}})
+
+db.product.insertOne({"id":3,"name":"Laptop","brand": "DELL","warranty_period": 2,
+"rating": 5,"customer":{"id":3,"name":"Dikshiya","city":"Mumbai",
+"purchase_date":17/08/2023,"bill_amount": 25000}})
+
+db.product.insertOne({"id":4,"name":"Phone","brand": "Samsumg","warranty_period": 1,
+"rating": 3,"customer":{"id":4,"name":"Aditi","city":"Mumbai",
+"purchase_date":15/08/2023,"bill_amount": 6000}})
+
+db.product.insertOne({"id":5,"name":"Refregirator","brand": "LG","warranty_period": 1,
+"rating": 5,"customer":{"id":5,"name":"Sachin","city":"Delhi",
+"purchase_date":23/08/2023,"bill_amount": 65000}})
+
+db.product.insertOne({"id":6,"name":"Phone","brand": "Iphone","warranty_period": 1,
+"rating": 4,"customer":{"id":6,"name":"Vedant","city":"Delhi",
+"purchase_date":20/08/2023,"bill_amount": 70000}})
+
+(3)Answer the following Queries
+a)List the names of product whose warranty period is one year
+=db.product.find({"warranty_period": 1 })
+
+b)List the customers has done purchase on “15/08/2023”
+=db.product.find({customer.purchase_date:"“15/08/2023”"})
+
+c)Display the names of products with brand which have highest rating
+=db.product.find({})
+
+d)Display customers who stay in Mumbai city and billamt >50000
+=db.product.find({"customer.city":"Mumbai","customer.bill_amount":{ $gt: 50000}})
+
+
+

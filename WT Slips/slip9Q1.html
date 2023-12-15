@@ -1,0 +1,124 @@
+<html>
+<head>
+ <title>Form</title>
+ <style>
+       label{
+    width:100px;
+    padding:2px;
+    display:inline-block;
+   }
+       body{ 
+    background-color:pink;
+    margin: 0;
+    padding: 0;
+  }
+ </style>
+</head>
+<body>
+<h1 align="center">College Admission Form</h1>
+<form>
+<label align="right">Search:</label>
+<input type="search"name="search"placeholder="search here..">
+<fieldset><legend>Basic Details</legend>
+<label>First Name:</label>
+<input type="text" name="fname"><br><br>
+<label>Middle Name:</label>
+<input type="text" name="mname"><br><br>
+<label>Last Name:</label>
+<input type="text" name="lname"><br><br>
+<label>Course</label>
+<select>
+<option>BSC(CS)</option>
+<option>MSC(CS)</option>
+<option>BBA</option>
+<option>MBA</option>
+</select><br><br>
+<label>Gender</label>
+<select>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select><br><br>
+<label>Birth Date</label>
+<input type="date"name="bday"><br><br>
+<label>Blood Group</label>
+<select>
+<option>A+</option>
+<option>A-</option>
+<option>AB+</option>
+<option>AB-</option>
+<option>B+</option>
+<option>B-</option>
+<option>O+</option>
+<option>O-</option>
+</select><br><br>
+<label>Marital Status</label>
+<select>
+<option>Single</option>
+<option>Married</option>
+</select><br><br>
+<label>Medical History</label>
+<input type="textarea"name="m"size="40"><br><br>
+</fieldset>
+<fieldset><legend>Contact Details</legend>
+<label>Personal Phone Number</label>
+<input type="tel"name="pno"><br><br>
+<label>Other Phone Number</label>
+<input type="tel"name="ono"><br><br>
+<label>Personal Email Id</label>
+<input type="email" name="mail"><br><br>
+<label>Other Email Id</label>
+<input type="email" name="mail"><br><br>
+</fieldset>
+<fieldset><legend>Family Details</legend>
+<label>Father's Name:</label>
+<input type="text"name="fname"><br><br>
+<label>Occupation</label>
+<input type="text"name="occ"><br><br>
+<label>Other Email Id</label>
+<input type="email" name="mail"><br><br>
+<label>Mother's Name:</label>
+<input type="text"name="mname"><br><br>
+<label>Occupation</label>
+<input type="text"name="occ"><br><br>
+<label>Other Email Id</label>
+<input type="email" name="mail"><br><br>
+</fieldset>
+<fieldset><legend>Academic Details</legend>
+<table>
+     <tr>
+        <td align="center"><b>No</b></td>
+        <td align="center"><b>Examination</b></td>
+        <td align="center"><b>Board</b></td>
+        <td align="center"><b>Percentage</b></td>
+        <td align="center"><b>Year of Passing</b></td>
+     </tr>
+     <tr>
+     <td>1</td>
+     <td>Class X</td>
+     <td><input type="text" name="ClassX_Board" maxlength="30" /></td>
+     <td><input type="text" name="ClassX_Percentage" maxlength="30" /></td>
+     <td><input type="text" name="ClassX_YrOfPassing" maxlength="30" /></td>
+     </tr>
+     <tr>
+     <td>2</td>
+     <td>Class XII</td>
+     <td><input type="text" name="ClassXII_Board" maxlength="30" /></td>
+     <td><input type="text" name="ClassXII_Percentage" maxlength="30" /></td>
+     <td><input type="text" name="ClassXII_YrOfPassing" maxlength="30" /></td>
+     </tr>
+     <tr>
+     <td>3</td>
+     <td>Graduation</td>
+     <td><input type="text" name="Graduation_Board" maxlength="30" /></td>
+     <td><input type="text" name="Graduation_Percentage" maxlength="30" /></td>
+     <td><input type="text" name="Graduation_YrOfPassing" maxlength="30" /></td>
+     </tr>
+     </table>
+</fieldset>
+<br>
+<button>CLEAR</button>
+<button>SUBMIT</button>
+</form>
+</body>
+</html>

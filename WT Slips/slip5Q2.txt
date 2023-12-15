@@ -1,0 +1,31 @@
+SLIP 5
+Q]1. Model the following database. Many employees working on one project. 
+A company has various ongoing projects.
+2. Assume appropriate attributes and collections as per the query
+requirements. [3]
+3. Insert at least 5 documents in each collection. [3]
+4. Answer the following Queries
+a. List all names of projects where Project_type =….. [3]
+b. List all the projects with duration greater than 3 months [3]
+c. Count no. of employees working on ……..project [4]
+d. List the names of projects on which Mr. Patil is working
+
+=>use emp
+  db.createCollection("employe")
+  db.employe.insertOne({"eno":1,"ename":"Mr Sarthak","salary":10000})
+  db.employe.insertOne({"eno":2,"ename":"Mr Vedant","salary":22000})
+  db.employe.insertOne({"eno":3,"ename":"Mr Patil","salary":121000})
+  db.employe.insertOne({"eno":4,"ename":"Mr Sachin","salary":44000})
+  db.employe.insertOne({"eno":5,"ename":"Mr Patil","salary":55000})
+   
+  db.createCollection("project")
+  db.project.insertOne({"pname":"PMV","duration_month":4,"project_type":"operational"})
+  db.project.insertOne({"pname":"Plants","duration_month":6,"project_type":"historic"})
+  db.project.insertOne({"pname":"ABC","duration_month":4,"project_type":"strategic"})
+  db.project.insertOne({"pname":"PMV","duration_month":3,"project_type":"business"})
+  db.project.insertOne({"pname":"PMV","duration_month":3,"project_type":"business"})
+
+ 
+  (4)Answer the following Queries
+     a.List all names of projects where Project_type =...
+     =>db.project.find({"project_type":"strategic"})

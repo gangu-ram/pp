@@ -1,0 +1,27 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-size:25px;
+  background:pink;
+}
+.container{
+  background:white;
+  width:500px;
+  padding:25px;
+  margin:50px auto 0;
+  border-top:5px solid blue;
+}
+.container h2
+{
+ font-size:30px;
+ line-height:24px;
+ padding:30px;
+ text-align:center;
+}
+label{
+width:200px;
+display:inline-block;
+}

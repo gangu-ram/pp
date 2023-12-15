@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:pink;
+            margin:0px;
+            padding:0px;
+        }
+        label {
+            display: inline-block;
+            width: 300px; 
+            font-size:30px;
+        }
+        h1{
+          font-size:40px;
+          color:red;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="travelForm">
+        <h1>Travel Plan Booking</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="contact">Contact No.:</label>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required><br><br>
+        
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender">Male
+        <input type="radio" id="female" name="gender">Female
+        <input type="radio" id="male" name="gender">Other<br><br>
+
+        <label>Preferred Season:</label>
+        <input type="checkbox" id="spring" name="season">Spring
+        <input type="checkbox" id="summer" name="season">Summer
+        <input type="checkbox" id="autumn" name="season">Autumn
+        <input type="checkbox" id="winter" name="season">Winter<br><br>
+
+        <label for="locationType">Location Type:</label>
+        <select id="locationType" name="locationType" required>
+            <option value="" disabled selected>Select location type</option>
+            <option value="beach">Beach</option>
+            <option value="mountain">Mountain</option>
+            <option value="city">City</option>
+            <option value="countryside">Countryside</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+SLIP 2
+Q]1. Model the following system as a document database.
+Consider a database of newspaper, publisher, and city.
+Different publisher publishes various newspapers in different cities
+2. Assume appropriate attributes and collections as per the query
+requirements. [3]
+3. Insert at least 5 documents in each collection. [3]
+4. Answer the following Queries.
+a. List all newspapers available “NASHIK” city [3]
+b. List all the newspaper of “Marathi” language [3]
+c. Count no. of publishers of “Gujrat” state [4]
+d. Write a cursor to show newspapers with highest sale in Maharashtra
+State [4]
+
+=>use news
+  db.createCollection("newspaper")
+  db.newspaper.insertOne({"id":1,"name":"times of india","language":"english","sale"
+  :100000,"city":"mumbai"})
+  db.newspaper.insertOne({"id":2,"name":"north east times","language":"english","sale"
+  :2000000,"city":"pune"})
+  db.newspaper.insertOne({"id":3,"name":"pudhari","language":"marathi","sale"
+  :4000000,"city":"nashik"})
+  db.newspaper.insertOne({"id":4,"name":"hindustan times","language":"hindi","sale"
+  :300000,"city":"mumbai"})
+  db.newspaper.insertOne({"id":5,"name":"lokmat","language":"marathi","sale"
+  :5000000,"city":"nashik"})
+
+  db.createCollection("publisher")
+  db.publisher.insertOne({"id":1,"name":"bennett","state":"maharashtra"})
+  db.publisher.insertOne({"id":2,"name":"GL","state":"maharashtra"})
+  db.publisher.insertOne({"id":3,"name":"yogesh","state":"gujrat"})
+  db.publisher.insertOne({"id":4,"name":"HT.LTD","state":"maharashtra"})
+  db.publisher.insertOne({"id":5,"name":"lokmanya tilak","state":"gujrat"})
+
+  (4)Answer the following Queries.
+     a.List all newspapers available “NASHIK” city
+     =>db.newspaper.find({city:"nashik"})
+
+     b.List all the newspaper of “Marathi” language
+     =>db.newspaper.find({"language":"marathi"})
+     
+     c.Count no.of publishers of “Gujrat” state 
+     =>db.publisher.countDocument({"state":"gujrat"})
+
+     d.Write a cursor to show newspapers with highest sale in Maharashtra
+     =>

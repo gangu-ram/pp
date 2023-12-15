@@ -1,0 +1,42 @@
+SLIP 4
+Q]1. Model the following information system as a document database.
+Consider hospitals around Nashik. Each hospital may have one or more 
+specializations like Pediatric, Gynaec, Orthopedic, etc. A person can 
+recommend/provide review for a hospital. A doctor can give service to one 
+or more hospitals.
+2. Assume appropriate attributes and collections as per the query
+requirements. [3]
+3. Insert at least 10 documents in each collection. [3]
+4. Answer the following Queries
+a. List the names of hospitals with………… specialization. [3]
+b. List the Names of all hospital located in ……. city [3]
+c. List the names of hospitals where Dr. Deshmukh visits [4]
+d. List the names of hospitals whose rating >=4
+
+=>use hospital
+  db.createCollection("hospital")
+  db.hospital.insertOne({"name":"Anand Hospital","city":"pune","specialization":["pediatric","gynaec"
+  ,"orthopedic"],"rating":4,"doctor":{"visitedNames":["Dr.Deshmukh","Dr.Gore","Dr.Shah"]}})
+  (3)Insert at least 10 documents in each collection
+
+  db.hospital.insertOne({"name":"Unicare Hospital","city":"pune","specialization":["gynaec"
+  ,"orthopedic"],"rating":2,"doctor":{"visitedNames":["Dr.Gore","Dr.Shake"]}})
+
+  db.hospital.insertOne({"name":"Sanjivani Hospital","city":"mumbai","specialization":["pediatric",gynaec
+  ,"orthopedic"],"rating":4,"doctor":{"visitedNames":["Dr.Deshmukh"]}})
+        .
+        .
+        .
+        .
+  (4)Answer the following Queries
+   a.List the names of hospitals with………… specialization.
+   =>db.hospital.find({"specialization":{$in:["gynaec"]}})
+
+   b.List the Names of all hospital located in …… city
+   =>db.hospital.find({"city":"pune"})
+
+   c. List the names of hospitals where Dr. Deshmukh visits
+   =>db.hospital.find({"doctor.visitedNames":{$in:["Dr.Deshmukh"]}})
+
+   d. List the names of hospitals whose rating >=4
+   =>db.hospital.find({"rating":{$gte:4}},{name:1})

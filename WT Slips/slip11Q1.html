@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        main {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        #department-info {
+            flex-grow: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Company Name</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showDepartment('HR')">HR</a>
+        <a href="#" onclick="showDepartment('IT')">IT</a>
+        <a href="#" onclick="showDepartment('Marketing')">Marketing</a>
+        <!-- Add more departments as needed -->
+    </nav>
+
+    <main>
+        <div id="department-info">
+            <!-- Department information will be displayed here -->
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Rotation Transition</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    img:hover {
+      transform: rotate(360deg);
+      transition-delay: 0.2s; /* Delay the rotation effect */
+    }
+  </style>
+</head>
+<body>
+
+  <img src="logo.png" alt="Rotating Image">
+
+</body>
+</html>
