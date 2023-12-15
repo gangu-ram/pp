@@ -1,0 +1,44 @@
+SLIP 4
+
+Write a bootstrap program for the following “The .table class adds basic styling (light padding and only horizontal dividers) to a table” The table can have the first name, last name, and email id as columns
+By practical  book
+
+
+
+
+
+2. Model the following information system as a document database. Consider hospitals around Nashik. Each hospital may have one or more specializations like Pediatric, Gynaec, Orthopedic, etc. A person can recommend/provide review for a hospital. A doctor can give service to one or more hospitals. 2. Assume appropriate attributes and collections as per the query requirements.  3. Insert at least 10 documents in each collection. 4. Answer the following Queries 
+
+db.createCollection("hospitals")
+mydb> db.hospitals.insertMany([{"h_id":1,"name":"city general hospital","city":"nashik","specializations":["pediatric","orthopedic"],"rating":4.2},{"h_id":2,"name":"womens care center","city":"nashik","specializations":["gynecology","maternity"],"ratring":4.8},{"h_id":3,"name":"orthocare clinic","city":"nashik","specializations":["orthopedic"],"rating":4.5},{"h_id":4,"name":"eye clinic","city":"pune","specializations":["eyes"],"rating":4.5}])
+
+
+
+db.createCollection("doctors")
+db.doctors.insertMany([{"do_id":101,"name":"dr.patil","hospitals":[1, 3]},{"do_id":102,"name":"dr.deshmukh","hospitals":[2, 3]},{"do_id":103,"name":"dr.ahire","hospitals":[2, 1]}])
+
+
+
+db.createCollection("reviews")
+db.reviews.insertMany([{"r_id":1,"h_id":1,"reviewer":"User123","rating":4},{"r_id":2,"h_id":2,"reviewer":"User456","rating":5},{"r_id":3,"h_id":3,"reviewer":"User356","rating":3},{"r_id":4,"h_id":4,"reviewer":"User678","rating":4}])
+
+
+
+a.	List the names of hospitals with………… specialization.
+
+db.hospitals.find({specializations:"orthopedic"},{_id:0,name:1})
+
+
+
+b.	List the Names of all hospital located in ……. City
+                              db.hospitals.find({city:"nashik"},{_id:0,name:1})
+
+
+c.	List the names of hospitals where Dr. Deshmukh visits 
+                                 var doctor = db.doctors.findOne({name:"dr.deshmukh"});
+ db.hospitals.find({h_id:{$in: doctor.hospitals}},{_id:0,name:1})
+
+
+d. List the names of hospitals whose rating >=4
+
+db.hospitals.find({rating:{$gte: 4}},{_id:0,name:1})

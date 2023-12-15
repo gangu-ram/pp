@@ -1,0 +1,38 @@
+SLIP 3
+
+Q1.
+ ques by image thumbnail in ower lab book manual
+
+
+
+Q2  
+
+. Model the following system as a document database. Consider employee and department’s information. 2. Assume appropriate attributes and collections as per the query requirements. 3. Insert at least 5 documents in each collection. 4. Answer the following Queries. 
+
+db.employees.insertMany([{"e_id":1,"name":"dhanu","salary":750000,"d_id":101},{"e_id":2,"name":"abhi","salary":80000,"d_id":102},{"mydb> 
+
+db.employees.insertMany([{"e_id":1,"name":"dhanu","salary":750000,"d_id":101},{"e_id":2,"name":"abhi","salary":80000,"d_id":102},{"e_id":3,"name":"sani","salary":700000,"d_id":103},{"e_id":4,"name":"harsh","salary":90000,"d_id":101},{"e_id":5,"name":"charli","salary":85000,"d_id":104}])
+
+db.createCollection("departments")
+mydb> db.departments.insertMany([{"d_id":101,"name":"sales"},{"d_id":102,"name":"marketing"},{"d_id":103,"name":"finance"},{"d_id":104,"name":"engineering"},{"d_id":105,"name":"HR"}])
+
+
+
+a.Display name of employee who has highest salary 
+db.employees.find().sort({sort:-1}).limit(1,{_id:0,name:1})
+
+b.Display biggest department with max. no. of employees
+
+
+
+c.	Write a cursor which shows department wise employee information  
+                   var cursor = db.departments.find()
+                   while(cursor.hasNext()){
+                 var department = cursor.next();
+                var employees = db.employees.find({d_id:department.department_id}).toArray();
+                printjson({department: department,employees:employees});  
+           }
+
+
+d.	List all the employees who work in Sales dept and salary > 50000
+db.employees.find({d_id:101,salary:{$gt: 50000}},{_id: 0, name:1})

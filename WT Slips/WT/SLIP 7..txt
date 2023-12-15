@@ -1,0 +1,36 @@
+SLIP 7.
+
+Q1>)
+
+Create a 3D text, apply appropriate font, style, color. Use : Hover in the style selector so that the 3D effects appear only when you hover over the text
+
+. Model the following information as a document database. A customer operates his bank account, does various transactions and get the banking services 2. Assume appropriate attributes and collections as per the query requirements.  3. Insert at least 5 documents in each collection.  4. Answer the following Queries. 
+
+db.createCollection("cust")
+{ ok: 1 }
+mydb> 
+
+db.cust.insertMany([{"cust_id":1,"fname":"john","lname":"smith","amountOpenDate":"2020-01-01","branch":"branchA","accountType":"saving","transactions":[1, 2]},{"cust_id":2,"fname":"sarah","lname":"jones","accountOpenDate":"2020-01-01","branch":"branchB","accountType":"loan","transactions":[3]},{"cust_id":3,"fname":"samuel","lname":"brown","accountOpenDate":"2020-02-15","branch":"branchaA","accountType":"saving","transactions":[4, 5]},{"cust_id":4,"fname":"sara","lname":"williams","accountOpenDate":"2020-01-01","branch":"branchC","accountType":"loan","transactions":[6]},{"cust_id":5,"fname":"mark","lname":"johnson","accountOpenDate":"2020-03-10","branch":"branchB","accountType":"saving","transactions":[7, 8]}])
+
+
+db.createCollection("transactions")
+{ ok: 1 }
+
+mydb> db.transactions.insertMany([{"t_id":1,"cust_id":1,mydb> db.transactions.insertMany([{"t_id":1,"cust_id":1,mydb> db.transactions.insertMany([{"mydb> db.transactions.insertMany([{"t_id":1,"cust_id":1,"transactionDate":"2020-01-02","amount":500,"transactionType":"deposit"},{"t_id":2,"cust_i":1,"transactionDate":"2020-02-01","amount":200,"transactionType":"withdrawal"},{"t_id":3,"cust_id":2,"transactionDate":"2020-01-01","amount":1000,"transactionType":"loan"},{"t_id":4,"cust_id":3,"transactionDate":"2020-02-20","amount":300,"transactionType":"deposit"},{"t_id":5,"cust_id":3,"transactionDate":"2020-03-01","amount":150,"transactionType":"withdrawal"},{"t_id":6,"cust_id":4,"transactionDate":"2020-01-15","amount":800,"transactionType":"loan"},{"t_id":7,"cust_id":5,"transactionDate":"2020-03-15","amount":400,"transactionType":"deposit"},{"t_id":8,"cust_id":5,"transactionDate":"2020-03-25","amount":200,"transactionType":"withdrawal"}])
+
+
+
+a.	List names of all customers whose first name starts with a “S” 
+db.cust.find({"fname":/^s/i},{"fname":1,"lname":1,"_id":0})
+
+
+b.	List all customers who has open an account on 1/1/2020 in ___branch 
+db.cust.find({"amountOpenDate":"2020-01-01","branch":"branchA"})
+
+
+c.	List the names customers where acctype=”Saving”
+db.cust.find({"accountType":"saving"},{"fname":1,"lname":1,"_id":0})
+
+
+d.	Count total no. of loan account holder of …….branch
+db.cust.count({"branch":"branchC","accountType":"loan"})

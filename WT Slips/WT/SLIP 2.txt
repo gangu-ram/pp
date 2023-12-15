@@ -1,0 +1,82 @@
+SLIP 2
+
+Create a container add row inside it and add 3 columns inside row using BootStrap.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Bootstrap Container with Rows and Columns</title>
+</head>
+<body>
+
+<div class="container">
+  <!-- Row -->
+  <div class="row">
+    <!-- Column 1 -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Column 1</h5>
+          <p class="card-text">Content for column 1.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Column 2 -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Column 2</h5>
+          <p class="card-text">Content for column 2.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Column 3 -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Column 3</h5>
+          <p class="card-text">Content for column 3.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Row -->
+</div>
+</body>
+</html>
+
+
+
+Q2,
+
+Model the following system as a document database. Consider a database of newspaper, publisher, and city. Different publisher publishes various newspapers in different cities 2. Assume appropriate attributes and collections as per the query requirements.  3. Insert at least 5 documents in each collection.  4. 
+Answer the following Queries
+
+
+db.createCollection("newspaper")
+mydb> db.newspaper.insertMany([{"n_id":1,"name":"The Time","language":"English","p_id":101,"city":"nashik","state":"maharashtra","sales":5000},{"n_id":2,"name":"Lakmat","language":"marathi","p_id":102,"city":"pune","state":"maharashtra","sales":75000},{"n_id":3,"name":"gujarat samachar","p_id":103,"city":"ahmedabad","state":"gujarat","sales":60000},{"n_id":4,"name":"hindustan times","language":"english","p_id":104,"city":"mumbai","state":"maharashtra","sales":10000},{"n_id":5,"name":"prahhar","language":"marathi","p_id":105,"city":"nagpur","state":"maharashtra","sales":40000}])
+
+
+db.createCollection("publishers")
+mydb> db.publishers.insertMany([{"p_id":101,"name":"time media","state":"maharashtra"},{"p_id":102,"name":"lokmat group","state":"maharashtra"},{"p_id":103,"name":"gujarat publications","state":"gujarat"},{"p_id":104,"name":"HT media","state":"maharashtra"},{"p_id":105,"name":"prahaar publications","state":"maharashtra"}])
+
+
+. a. List all newspapers available “NASHIK” city
+ 
+db.newspaper.find({city:"nashik"},{_id:0,name:1,language:1})
+
+
+b. List all the newspaper of “Marathi” language 
+db.newspaper.find({language:"marathi"},{_id:0,name:1,city:1})
+
+
+ c. Count no. of publishers of “Gujrat” state  
+db.publishers.countDocuments({state:"gujarat"})
+
+
+e.	Write a cursor to show newspapers with highest sale in Maharashtra State 
+var cursor = db.newspaper.find({state:"maharashtra"}).sort({sales:-1})
+
+while (cursor.hasNext()) { printjson(cursor.next()); }

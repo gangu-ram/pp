@@ -1,0 +1,61 @@
+SLIP 8
+
+Q1>)
+
+Create a button with different style (Secondary, Primary, Success, Error, Info, 
+Warning, Danger) using BootStrap
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Bootstrap Button Styles</title>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2>Bootstrap Button Styles</h2>
+
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+  </div>
+
+ 
+</body>
+</html>
+
+
+Q2.)
+
+Model the following inventory information as a document database. The inventory keeps track of various items. The items are tagged in various categories. Items may be kept in various warehouses and each warehouse keeps track of the quantity of the item. 2. Assume appropriate attributes and collections as per the query requirements  3. Insert at least 5 documents in each collection.  4. Answer the following Queries. 
+
+db.createCollection("item")
+{ ok: 1 }
+mydb> db.item.insertMany([{"i_id":1,"iname":"laptop","tags":["electronics","portable"],"quantity":400,"status":"A","height":12},{"i_id":2,"iname":"desk chair","tags":["furniture","office"],"quantity":250,"status":"B","height":15},{"i_id":3,"iname":"planner","tags":["stationery","office"],"quantity":30,"status":"C","height":8},{"i_id":4,"iname":"printer","tags":["electronics","office"],"quantity":120,"status":"A","height":10},{"i_id":5,"iname":"bookshelf","tags":["furniture","storage"],"quantity":180,"status":"B","height":72}])
+
+
+db.warehouse.insertMany([{"w_id":101,"wname":"main warehouse","items":[{"i_id":1,"quantity":150},{"i_id":2,"quantity":80},{"i_id":3,"quantity":20},{"i_id":4,"quantity":70},{"i_id":5,"quantity":100}]},{"w_id":102,"wname":"bakup warehouse","items":[{"i_id":1,"quantity":250},{"i_id":2,"quantity":170},{"i_id":3,"quantitiy":10},{"i_id":4,"quantity":50},{"i_id":5,"quantity":80}]},{"w_id":103,"wname":"remote warehouse","items":[{"i_id":1,"quantity":50},{"i_id":2,"quantity":30},{"i_id":3,"quantity":0},{"i_id":4,"quantity":0},{"i_id":5,"quantity":0}]}])
+
+
+a.	List all the items qty is greater than 300  
+db.item.find({"quantity":{$gt:300}})
+
+b.	List all items which have tags less than 5 
+
+
+c.	List all items having status equal to “B” or having quantity less than 50 and height of the product should be greater than 8 
+
+db.item.find({$or:[{"status":"B"},{$and:[{"quantity":{$lt:50}},{"height":{$gt:8}}]}]})
+
+
+
+d.	Find all warehouse that keeps item “Planner” and having in stock quantity less than 20
+
+db.warehouse.find({"items":{$elemMatch:{"i_id":3,"quantity":{$lt:20}}}})

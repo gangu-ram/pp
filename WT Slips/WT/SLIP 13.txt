@@ -1,0 +1,103 @@
+SLIP 13
+Create a useful web with the following information and structure using gs like: , , , ,
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Information</title>
+    <!-- Add your CSS styles or external stylesheet links here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header, footer, nav, section, aside {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Movie Database</h1>
+        <p>Welcome to our online movie information platform.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Actors</a></li>
+            <li><a href="#">Producers</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Featured Movies</h2>
+        <p>Explore our curated list of must-watch movies.</p>
+        <!-- Add more content as needed -->
+    </section>
+
+    <aside>
+        <h2>Latest News</h2>
+        <p>Stay updated with the latest movie industry news.</p>
+        <!-- Add more content as needed -->
+    </aside>
+
+    <footer>
+        <p>&copy; 2023 Movie Database. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
+
+
+Q2.>
+
+
+Model the following Student Competition information as a document database. Consider Student competition information where the student can participate in many competitions. 2. Assume appropriate attributes and collections as per the query requirements 3. Insert at least 10 documents in each collection.  4. Answer the following Queries. 
+
+
+
+db.createCollection("Stuents")
+{ ok: 1 }
+mydb> db.Students.insertMany([{"stud_id":1,"name":"john","class":"FY","Competitions":[{"competition_name":"running","position":1},{"competition_name":"painting","position":2}]},{"stud_id":2,"name":"abc","class":"TY","Competitions":[{"competition_name":"hakethon","position":1},{"competition_name":"codevita","position":3}]},{"stud_id":3,"name":"xyz","class":"SY","Competitions":[{"competition_name":"swimming","position":2},{"competition_name":"climbing","position":1}]},{"stud_id":4,"name":"dhanu","class":"FY","Competitions":[{"competition_name":"sleeping","position":1},{"competition_name":"coding","position":2}]}])
+
+
+db.Competition.insertMany([{"com_id":101,"name":"hakethon","participants":[{"stud_id":2,"position":1}]},{"com_id":102,"name":"sleepin","participants":[{"stud_id":4,"position":1}]},{"com_id":103,"name":"coding","participants":[{"stud_id":4,"position":2}]},{"com_id":104,"name":"codevita","participants":[{"stud_id":2,"position":2}]}])
+
+
+
+a.	Display average no. of students participating in each competition. 
+db.Competition.aggregate([{$project:{name :1,winners:{$slice:["$participants",3]}}}])
+
+b.	Find the number of student for programming competition.
+db.Competition.findOne({name:"coding"}).participants.length;
+
+c.	Display the names of first three winners of each competition
+db.Competition.aggregate([{$project:{name :1,winners:{$slice:["$participants",3]}}}])
+
+
+d.	. d. Display students from class 'FY’ and participated in
+
+ 'E-Rangoli ' Competition. 
+
+db.Students.find({class:"FY","Competition.competition_name":"running"})

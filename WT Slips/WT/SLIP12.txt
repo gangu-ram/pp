@@ -1,0 +1,43 @@
+SLIP12
+Design an appropriate HTML form for customer registration visiting a departmental store. Form should consist of fields such as name, contact no, gender, preferred days of purchasing, favorite item (to be selected from a list of items), suggestions etc. You should provide button to submit as well as reset the form contents.
+<html>
+  <body>
+    <form>
+      <h1>Customer Registration</h1>
+      <table border=1>
+        <tr>
+          <td>name</td>
+          <td><input type="text" size="20"></td>
+        </tr>
+        <tr>
+          <td>contact no</td>
+          <td><input type="text" size="20"></td>
+        </tr>
+        <tr>
+          <td>gender</td>
+          <td><input type="radio"size="20">male<input type="radio"size="20">female</td>
+        </tr>
+        <tr>
+          <td>Days of purchasing</td>
+          <td><input type="text" size="20"></td>
+        </tr>
+        <tr>
+          <td>favorite item</td>
+          <td><select name="example">
+               <option value="item1">item1</option>
+               <option value="item2">item2</option>
+               <option value="item3">item3</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>Suggetion</td>
+          <td><textarea rows="4" cols="50"></textarea></td>
+        </tr>
+        <tr>
+          <td><input type="reset" value="Reset"></td>
+          <td><input type="submit" value="submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

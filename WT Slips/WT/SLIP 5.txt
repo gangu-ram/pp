@@ -1,0 +1,73 @@
+SLIP 5
+
+Write a HTML code, which generate the following output [ Apply border, border radius tags ]
+
+
+<html>
+<head>
+    <title>Table</title>
+</head>
+<body>
+    <table border ="1">
+        <tr>
+            <th colspan="4">List of persons</th>
+            </tr>
+        <tr>
+            <td width = 80>srno</td>
+            <td width = 80>Person Name</td>
+            <td width = 80>Age</td>
+            <td width = 80>Countery</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>dhanshree</td>
+            <td>20</td>
+            <td>Pune</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>abhi</td>
+            <td>21</td>
+            <td>pune</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>sani</td>
+            <td>21</td>
+            <td>pune</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Q2.)
+
+
+Model the following database. Many employees working on one project. A company has various ongoing projects. 2. Assume appropriate attributes and collections as per the query requirements.  3. Insert at least 5 documents in each collection.  4. Answer the following Queries 
+
+
+db.createCollection("project")
+mydb> db.project.insertMany([{"pro_id":1,"name":"project A","project_type":"software development","duration_mounths":5},{"pro_id":2,"name":"project B","project_type":"infrastructure","duration_months":4},{"pro_id":3,"name":"project c","project_type":"marketing","duration_months":2},{"pro_id":4,"name":"project d","project_type":"cloud computing","duration_months":5},{"pro_id":5,"name":"project e","project_type":"AI","duration_months":7}])
+
+
+db.createCollection("emp")
+mydb> db.emp.insertMany([{"emp_id":101,"name":"mr. patil","project":[1,2]},{"emp_id":102,"name":"mr. sharma","project":[2, 3]},{"emp_id":103,"name":"miss.ahire","projects":[4, 5]},{"emp_id":104,"name":"mr.waghmode","project":[4, 5]}])
+
+
+a.	List all names of projects where Project_type =….. b. List all the projects with duration 
+                                      db.project.find({project_type:"software development"},{_id: 0,name: 1})
+
+
+b.	greater than 3 months 
+
+db.project.find({duration_months:{$gt:3}},{_id: 0, name: 1})
+
+
+c.	Count no. of employees working on ……..project
+
+
+var projectEmployeesCount = db.emp.count({project:1});
+
+print("number of employees working on project A:"+projectEmployeesCount);
+d.	List the names of projects on which Mr. Patil is working

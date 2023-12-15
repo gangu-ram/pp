@@ -1,0 +1,172 @@
+Q1.Write the HTML5 code for generating the form as shown below. Apply the internal CSS to the following form to change the font size of the heading to 6pt and change the color to red and also change the background color to yellow.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management</title>
+</head>
+<style>
+    h2 {
+    font-family: Arial;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    text-decoration: underline;
+}
+table {
+    background-color: rgb(107, 250, 243);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+}
+input[type=text] {
+    box-sizing: border-box;
+    width: 80%;
+    padding: 10px 5px;
+    margin-top: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+input[type=date] {
+    box-sizing: border-box;
+    width: 80%;
+    margin: 8px 0;
+    padding: 8px 5px;
+    border-radius: 5px;
+}
+select {
+    box-sizing: border-box;
+    width: 80%;
+    margin: 8px 0;
+    padding: 10px 5px;
+    border-radius: 5px;
+}
+textarea {
+    padding: 2px;
+    line-height: 1;
+    border-radius: 5px;
+    box-sizing: border-box;
+} 
+.reset1 {
+    width: 30%;
+    background-color: #547ef3;
+    color: white;
+    padding: 12px 8px;
+    margin-right: 50px;
+    margin-left: -50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: auto;
+}
+.reset2:hover{
+        background-color: #584ca0;
+     }
+     button[type=submit] {
+    width: 65%;
+    padding: 12px 8px;
+    margin-left: 80px;
+    margin-top: auto;
+    margin-right: -20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #33d439;
+    color: white;
+    font-size: 15px;
+}
+button[type=submit]:hover {
+    background-color: #45a049;
+}
+.row1{
+    visibility: hidden;
+    display: none;
+}
+</style>
+<body>
+    <h2>Project Management</h2>
+    <table cellpadding="10" cellspacing="2" align="center">
+        <th class="row1">Project Name</th>
+        <tr>
+            <td class="col1">Project Name</td>
+            <td class="col2"><input type="text" name="project name" id="project name"></td>
+        </tr>
+        <th class="row1">Assigned to</th>
+        <tr>
+            <td class="col1">Assigned to</td>
+            <td class="col2">
+                <select name="person" id="projectAssigned">
+                    <option value="Er Merry Petision">Er Merry Petision</option>
+                    <option value="Er Deepak Bhusan">Er Deepak Bhusan</option>
+                    <option value="Er Robert Watson">Er Robert Watson</option>
+                </select>
+            </td>
+        </tr>
+        <th class="row1">Start Date</th>
+        <tr>
+            <td class="col1">Start Date</td>
+            <td class="col2"><input type="date" name="Start Date" id="SDate" class="startDate"></td>
+        </tr>
+        <th class="row1">End Date</th>
+        <tr>
+            <td class="col1">End Date</td>
+            <td class="col2"><input type="date" name="End date" id="EDate" class="endDate"></td>
+        </tr>
+
+        <th class="row1">Priority</th>
+        <tr>
+            <td class="col1">Priority</td>
+            <td class="col2">
+                <input type="radio" name="priority" id="high" value="High"> High
+                <input type="radio" name="priority" id="average" value="Average"> Average
+                <input type="radio" name="priority" id="low" value="Low"> Low
+            </td>
+        </tr>
+        <th class="row1">Description</th>
+        <tr>
+            <td class="col1">Description</td>
+            <td class="col2"><textarea name="description" id="description" cols="35" rows="4"></textarea></td>
+        </tr>
+        <tr colspan="2" align="center">
+            <td>
+                <button type="submit" class="submit1" >Submit</button>
+            </td>
+            <td>
+                <button type="reset" class="reset1" >Clear</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+Q2. Model the following Property system as a document database. Consider a set of Property, Owner. One owner can buy many properties. 2. Asume appropriate attributes and collections as per the query requirements.  3. Insert at least 05 documents in each collection. 4. Answer the following Queries 
+use mydb
+mydb> db.createCollection("property")
+mydb> 
+
+db.property.insertMany([{"p_id":1,"area":"mumbai","rate":150000,"o_id":101},{"p_id":2,"area":"nashik","rate":90000,"o_id":102},{"p_id":3,"area":"pune","rate":120000,"o_id":103},{"p_id":4,"area":"mumbai","rate":180000,"o_id":101},{"p_id":5,"area":"nagpur","rate":8000,"o_id":104}])
+
+
+db.createCollection("owner")
+mydb> db.owner.insertMany([{"o_id":101,"name":"mr.patil","property_owned":[1, 4]},{"o_id":102,"name":"mr.deshmukh","property_owned":[2]},{"o_id":103,"name":"mrs.kulkarni","property_owned":[3]},{"o_id":104,"name":"mr.sharma","property_owned":[5]}])
+
+
+a.	Display area wise property details
+db.property.aggregate([{$group:{_id:"$area",property:{$push:"$ROOT"}}}])
+
+
+b.	Display property owned by 'Mr.Patil' having minimum rate 
+          db.property.find({o_id:101}).sort({rate:1}).limit(1)
+
+
+c.	Give the details of owner whose property is at “Nashik”
+       var property = db.property.findOne({area:"nashik"})
+       db.owner.findOne({property_owned:property.p_id})
+
+d.	Display area of property whose rate is less than 100000. 
+db.property.find({"rate":{$lt: 100000}},{"area":1})

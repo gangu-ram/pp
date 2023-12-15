@@ -1,0 +1,140 @@
+SLIP 6
+Create a web page being rendered in the browser consists of many things - logo,        informative text, pictures, hyperlinks, navigational structure and table.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Webpage Title</title>
+    <style>
+        /* Add some basic styling to make it visually appealing */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+
+        nav {
+            margin: 10px 0;
+        }
+
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Your Logo" width="100">
+        <h1>Your Website Name</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <section>
+        <h2>Welcome to Our Website!</h2>
+        <p>This is some informative text about your website. You can add more details and make it interesting.</p>
+        <img src="image.jpg" alt="Description of the image">
+        <p>Learn more <a href="#">about us</a>.</p>
+    </section>
+
+    <section>
+        <h2>Our Services</h2>
+        <p>Here, you can provide information about the services your website offers.</p>
+    </section>
+
+    <section>
+        <h2>Contact Us</h2>
+        <p>Feel free to <a href="#">contact us</a> for any inquiries or feedback.</p>
+    </section>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>(555) 123-4567</td>
+            </tr>
+            <tr>
+                <td>Jane Doe</td>
+                <td>jane@example.com</td>
+                <td>(555) 987-6543</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+
+Q2.)
+
+
+Model the following information as a document database. A customer can take different policies and get the benefit. There are different types of policies provided by various companies 2. Assume appropriate attributes and collections as per the query requirements.  3. Insert at least 5 documents in each collection.  4. Answer the following Queries. 
+db.createCollection("customers")
+{ ok: 1 }
+
+
+mydb> db.customer.insertMany([{"c_id":1,"name":"john doe","age":30,"address":"123 main st","policies":["komal jeevan","life secure","health shield"]},{"c_id":2,"name":"jane smith","age":25,"address":"456 oak st","policies":["komal jeevan","travel guared"]},{"c_id":3,"name":"bob johnson","age":40,"address":"789 pine st","policies":["life secure","accident protect","health shield"]},{"c_id":4,"name":"alice brown","age":35,"address":"101 maple st","policies":["monthly saver","retirement plan"]},{"c_id":5,"name":"charlie wilson","age":28,"address":"202 cedar st","policies":["health shield","komal jeevan"]}])
+
+db.policies.insertMany([{"p_id":101,"pname":"komal jeevan","cname":"abc insurance","type":"yearly","premiumAmount":1200,"benefits":["death benefit","maturity benefit"]},{"p_id":102,"pname":"life secure","cname":"xyz insurance","type":"half yearly","premiumAmount":800,"benefits":["death benefit","critical illness cover"]},{"p_id":103,"pname":"health shield","cname":"pqr insurance","type":"monthly","premiumAmount":100,"benefits":["health coverage","hospitalization benefit"]},{"p_id":104,"pname":"travel guard","cname":"lmn insurance","type":"yearly","premiumAmount":500,"benefits":["travel coverage","trip cancellation"]},{"p_id":105,"pname":"monthly saver","cname":"xyz insurance","type":"monthly","premiumAmount":150,"benefits":["savings","investment growth"]}])
+
+
+a.	List the details of customers who have taken “Komal Jeevan” Policy
+db.customer.find({"policies":"komal jeevan"})
+
+
+b.	Display average premium amount 
+db.policies.aggregate([{$group:{_id:null,avgPremium:{$avg:"$premiumAmount"}}}])
+
+
+c.	Increase the premium amount by 5% for policy type=”Monthly” 
+db.policies.updateMany({"type":"monthly"},{$mul:{"premiumAmount":1.05}})
+
+A
+d.	Count no. of customers who have taken policy type “half yearly”.

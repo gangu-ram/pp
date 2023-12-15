@@ -1,0 +1,87 @@
+SLIP 14
+Design an HTML form to take the information of a customer for booking a travel plan consisting of fields such as name, address, contact no., gender, preferred season(Checkboxes), location type(to be selected from a list) etc. You should provide button to submit as well as reset the form contents
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Plan Booking</title>
+    <!-- Add your CSS styles or external stylesheet links here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin-bottom: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="reset"] {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required>
+
+        <label>Gender:</label>
+        <label for="male"><input type="radio" id="male" name="gender" value="male" required> Male</label>
+        <label for="female"><input type="radio" id="female" name="gender" value="female" required> Female</label>
+
+        <label>Preferred Season:</label>
+        <label for="spring"><input type="checkbox" id="spring" name="season" value="spring"> Spring</label>
+        <label for="summer"><input type="checkbox" id="summer" name="season" value="summer"> Summer</label>
+        <label for="autumn"><input type="checkbox" id="autumn" name="season" value="autumn"> Autumn</label>
+        <label for="winter"><input type="checkbox" id="winter" name="season" value="winter"> Winter</label>
+
+        <label for="locationType">Location Type:</label>
+        <select id="locationType" name="locationType" required>
+            <option value="beach">Beach</option>
+            <option value="mountain">Mountain</option>
+            <option value="city">City</option>
+            <option value="countryside">Countryside</option>
+        </select>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+
+</html>
